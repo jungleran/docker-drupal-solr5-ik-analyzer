@@ -257,7 +257,8 @@
     <!-- An unstemmed text field - good if one does not know the language of the field -->
     <fieldType name="text_und" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <!-- <tokenizer class="solr.WhitespaceTokenizerFactory"/> -->
+        <tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" useSmart="false" />
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
         <filter class="solr.WordDelimiterFilterFactory"
                 protected="protwords.txt"
@@ -271,7 +272,8 @@
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
       <analyzer type="query">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <!-- <tokenizer class="solr.WhitespaceTokenizerFactory"/> -->
+        <tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" useSmart="true" />
         <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter class="solr.StopFilterFactory"
                 ignoreCase="true"
@@ -289,7 +291,8 @@
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
       <analyzer type="multiterm">
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <!-- <tokenizer class="solr.WhitespaceTokenizerFactory"/> -->
+        <tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" useSmart="false" />
         <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter class="solr.StopFilterFactory"
                 ignoreCase="true"
