@@ -39,6 +39,15 @@
        org.apache.solr.analysis package.
     -->
 
+    <fieldType name="text_ik" class="solr.TextField">
+        <analyzer type="index">
+            <tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" useSmart="false" />
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" useSmart="true" />
+        </analyzer>
+    </fieldType>
+
     <!-- The StrField type is not analyzed, but indexed/stored verbatim.
        - StrField and TextField support an optional compressThreshold which
        limits compression (if enabled in the derived fields) to values which
