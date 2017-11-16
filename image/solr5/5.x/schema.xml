@@ -166,7 +166,8 @@
     <!-- A text field that only splits on whitespace for exact matching of words -->
     <fieldType name="text_ws" class="solr.TextField" omitNorms="true" positionIncrementGap="100">
       <analyzer>
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <!-- <tokenizer class="solr.WhitespaceTokenizerFactory"/> -->
+        <tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" useSmart="false" />
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
