@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+
+  solr:
+    build: ./image/solr5
+    container_name: solr
+    ports:
+      - 8600:8983
